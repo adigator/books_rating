@@ -1,0 +1,5 @@
+<% @authors.each do |author| %>
+    <%= link_to author.name + " " + author.surname, author_path(author) %>
+    <%= author.rating %>
+    <%= author.country %>
+<% end %>

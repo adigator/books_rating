@@ -1,0 +1,10 @@
+<% @books.each do |book| %>
+    <%= link_to book.title, book_path(book) %>
+    <%= book.year %>
+    <%= book.publisher %>
+    <%= book.genre %>
+    <%= book.cober %>
+    <%= book.description %>
+    <%= book.rating %>
+    <%= book.country %>
+<% end %>

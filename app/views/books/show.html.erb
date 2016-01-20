@@ -1,0 +1,11 @@
+<%= @book.title %>
+<%= @book.year %>
+<%= @book.publisher %>
+<%= @book.genre %>
+<%= @book.cober %>
+<%= @book.description %>
+<%= @book.rating %>
+<%= @book.country %>
+<% @authors.each do |aut| %>
+    <%= link_to aut.name + " " + aut.surname, author_path(aut) %>
+<% end %>

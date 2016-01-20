@@ -3,7 +3,8 @@ class CreateAuthors < ActiveRecord::Migration
     create_table :authors do |t|
       t.string :name
       t.string :surname
-      t.string :rating
+      t.float :rating
+      t.integer :rates
       t.string :country
       t.references :book
       t.timestamps null: false
