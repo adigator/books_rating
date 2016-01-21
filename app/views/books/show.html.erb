@@ -1,12 +1,14 @@
 <%= @book.title %>
-<%= image_tag(@book.image.url(:medium), {:alt => 'movie_cover_' + @book.id.to_s }) %>
+<%= image_tag(@book.image.url(:medium), {:alt => 'book_cover_' + @book.id.to_s }) %>
 <%= @book.year %>
 <%= @book.publisher %>
 <%= @book.genre %>
-<%= @book.cober %>
 <%= @book.description %>
-<%= @book.rating %>
 <%= @book.country %>
 <% @authors.each do |aut| %>
     <%= link_to aut.name + " " + aut.surname, author_path(aut) %>
+<% end %>
+<% if current_user && current_user.admin? %>
+    <%= link_to "Edytuj", edit_book_path(@book), :class => "gugu"  %>
+    <%= link_to "Usun", @book, :method => :delete, :data => {:confirm => "czy na pewno?"}, :class => "gugu"  %>
 <% end %>

@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   post 'add/books' => 'books#create'
   get 'authors' => 'authors#index'
   get 'authors/:id' => 'authors#show', as: :author
+  get 'add/author' => 'authors#new'
+  resources :authors
+  post 'add/authors' => 'authors#create'
   # Example resource route with options:
   #   resources :products do
   #     member do

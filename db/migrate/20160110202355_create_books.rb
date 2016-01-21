@@ -5,11 +5,9 @@ class CreateBooks < ActiveRecord::Migration
       t.string :year
       t.string :publisher
       t.string :genre
-      t.string :cober
       t.string :description
       t.string :country
       t.references :author
-
       t.timestamps null: false
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121120249) do
+ActiveRecord::Schema.define(version: 20160121132657) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "name"
@@ -20,9 +20,21 @@ ActiveRecord::Schema.define(version: 20160121120249) do
     t.integer  "rates"
     t.string   "country"
     t.integer  "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
+
+  create_table "authors_books", id: false, force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "book_id",   null: false
+  end
+
+  add_index "authors_books", ["author_id"], name: "index_authors_books_on_author_id"
+  add_index "authors_books", ["book_id"], name: "index_authors_books_on_book_id"
 
   create_table "books", force: :cascade do |t|
     t.string   "title"

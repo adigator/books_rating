@@ -1,0 +1,15 @@
+<%= form_for @author, html: { multipart: true } do |f| %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :surname %>
+    <%= f.text_field :surname %>
+    <%= f.label :country %>
+    <%= f.text_field :country %>
+    <%= f.submit "Edytuj",class:"btn-submit" %>
+<% end %>
+
+
+<%= link_to 'Powrót', authors_path, :class => "gugu"  %>
+
