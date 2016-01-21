@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'books' => 'books#index'
   get 'books/:id' => 'books#show', as: :book
+  get 'add/book' => 'books#new'
+  resources :books
+  post 'add/books' => 'books#create'
   get 'authors' => 'authors#index'
   get 'authors/:id' => 'authors#show', as: :author
   # Example resource route with options:

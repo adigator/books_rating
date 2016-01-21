@@ -7,8 +7,6 @@ class CreateBooks < ActiveRecord::Migration
       t.string :genre
       t.string :cober
       t.string :description
-      t.float :rating
-      t.integer :rates
       t.string :country
       t.references :author
 

@@ -1,4 +1,5 @@
 <%= @book.title %>
+<%= image_tag(@book.image.url(:medium), {:alt => 'movie_cover_' + @book.id.to_s }) %>
 <%= @book.year %>
 <%= @book.publisher %>
 <%= @book.genre %>
