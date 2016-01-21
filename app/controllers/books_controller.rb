@@ -16,6 +16,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @authors = Author.all
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Utworzono książkę.' }
@@ -30,9 +31,11 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @authors = Author.where(:id => @book.author_id)
+    @reviews = Review.where(book_id: @book.id).order("created_at DESC")
   end
 
   def update
+    @authors = Author.all
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Ksiazka poprawiona.' }
@@ -58,6 +61,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
   def book_params
-    params.require(:book).permit(:title, :year, :publisher, :genre, :cober, :description, :country, :author_id, :image)
+    params.require(:book).permit(:title, :year, :publisher, :genre, :description, :country, :image, :author_id => [])
   end
 end

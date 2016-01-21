@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -22,7 +23,11 @@ Rails.application.routes.draw do
   get 'books' => 'books#index'
   get 'books/:id' => 'books#show', as: :book
   get 'add/book' => 'books#new'
-  resources :books
+
+  resources :books do
+    resources :reviews, except: [:show, :index]
+  end
+
   post 'add/books' => 'books#create'
   get 'authors' => 'authors#index'
   get 'authors/:id' => 'authors#show', as: :author

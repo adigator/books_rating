@@ -1,7 +1,7 @@
 <%= @author.name %>
 <%= @author.surname %>
 <%= image_tag( @author.image.url(:medium), {:alt => 'author_photo_' + @author.id.to_s }) %>
-<%= @author.rating %>
+
 <%= @author.country %>
 <% @books.each do |book| %>
     <%= link_to book.title, book_path(book) %>

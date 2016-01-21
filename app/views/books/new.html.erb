@@ -13,8 +13,8 @@
     <%= f.text_field :description %>
     <%= f.label :country %>
     <%= f.text_field :country %>
-    <%= f.submit "Dodaj książkę",class:"btn-submit" %>
-    <%= f.select(:author_id, @authors.map {|p| [ p.name, p.id ] },
-                 { :prompt => "Wybierz autorow"},
+    <%= f.submit 'Dodaj książkę',class:'btn-submit' %>
+    <%= f.select(:author_id, @authors.map {|p| [p.name,p.id]},
+                 { :prompt => 'Wybierz autorow'},
                  { :multiple => true, :size => 5, :id => 'dropdown' }) %>
 <% end %>

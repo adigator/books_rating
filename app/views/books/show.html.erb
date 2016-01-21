@@ -8,6 +8,22 @@
 <% @authors.each do |aut| %>
     <%= link_to aut.name + " " + aut.surname, author_path(aut) %>
 <% end %>
+<% if current_user  %>
+    <%= link_to "Napisz recenzje", new_book_review_path(@book), :class => "gugu"  %>
+
+<% end %>
+<%= @book.title %>
+<% if @reviews.blank? && current_user %>
+    <h3>Nie ma jeszcze recenzji ;( </h3>
+    <%= link_to "Bądź pierwszy!", new_book_review_path(@book), :class => "gugu"  %>
+<% elsif @reviews.blank? %>
+    <h3>Nie ma jeszcze recenzji ;( </h3>
+<% else %>
+    <% @reviews.each do |review| %>
+        <%= review.rating %>
+        <%= review.comment %>
+    <% end %>
+<% end %>
 <% if current_user && current_user.admin? %>
     <%= link_to "Edytuj", edit_book_path(@book), :class => "gugu"  %>
     <%= link_to "Usun", @book, :method => :delete, :data => {:confirm => "czy na pewno?"}, :class => "gugu"  %>
