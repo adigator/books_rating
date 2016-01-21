@@ -59,6 +59,6 @@ def set_author
 end
 
 def author_params
-  params.require(:author).permit(:name, :surname, :country, :book, :image)
+  params.require(:author).permit(:name, :surname, :country, :book_id, :image)
 end
 end

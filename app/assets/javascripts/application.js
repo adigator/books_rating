@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require select2
 //= require_tree .
+$(document).ready(function(){
+    $( "#dropdown" ).select2();
+
+});

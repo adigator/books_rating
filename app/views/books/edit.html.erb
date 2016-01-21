@@ -14,6 +14,9 @@
     <%= f.label :country %>
     <%= f.text_field :country %>
     <%= f.submit "Edytuj",class:"btn-submit" %>
+    <%= f.select(:author_id, @authors.map {|p| [ p.name, p.id ] },
+                 { :prompt => "Wybierz autorow"},
+                 { :multiple => true, :size => 5, :id => 'dropdown' }) %>
 <% end %>
 
 
