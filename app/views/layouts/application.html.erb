@@ -10,17 +10,45 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if current_user %>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= root_path %>"><div class="logo"></div></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'BAZA KSIĄŻEK', books_path %></li>
+        <li><%= link_to 'BAZA AUTORÓW', authors_path %></li>
+        <% if current_user && current_user.admin? %>
+            <li class="nick"><%= link_to "admin panel", root_path %></li>
+        <% end %>
+        <% if current_user %>
+            <li class="nick"><%= link_to current_user.username, root_path %></li>
 
-    <li class="nick"><%= current_user.username %></li>
-    <li><%= link_to 'Wyloguj', logout_path, method: 'delete' %></li>
+            <li><%= link_to 'Wyloguj', logout_path, method: 'delete' %></li>
+        <% else %>
+            <li><%= link_to 'Zaloguj', login_path %></li>
+            <li><%= link_to 'Zarejestruj', signup_path %></li>
+        <% end %>
+      </ul>
 
-<% else %>
+      <%= form_tag search_books_path, method: :get, class: "nav navbar-form navbar-right", role: "search" do %>
+          <p>
+            <%= text_field_tag :search, params[:search], class: "form-control" %>
+            <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+          </p>
+      <% end %>
+    </div>
+  </div>
+</nav>
 
-    <li><%= link_to 'Zaloguj', login_path %></li>
-    <li><%= link_to 'Zarejestruj', signup_path %></li>
 
-<% end %>
 
 <%= yield %>
 

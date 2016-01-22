@@ -28,6 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip'
 gem 'select2-rails'
 gem 'rmagick'
+gem 'searchkick', '~> 1.1', '>= 1.1.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

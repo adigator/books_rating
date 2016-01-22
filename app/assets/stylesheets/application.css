@@ -14,4 +14,199 @@
  *= require_self
  *= require select2
  */
+.navbar {
+    background-color: #04a7ec;
+    margin-bottom: 0;
+    border-bottom: 0;
+    min-height: 60px;
+}
+/* line 122, ../../sass/screen.scss */
+.navbar .navbar-header {
+    overflow: hidden;
+}
+/* line 125, ../../sass/screen.scss */
+.navbar .navbar-header .navbar-brand {
+    height: 60px;
+    width: 75px;
+    padding: 0;
+    margin-left: 20px;
+    position: relative;
+    z-index: 5;
+}
+/* line 133, ../../sass/screen.scss */
+.navbar .navbar-header .navbar-brand:before, .navbar .navbar-header .navbar-brand:after {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    height: 60px;
+    width: 8px;
+    top: 0;
+    box-shadow: 0px 0px 24.65px 4.35px rgba(0, 0, 0, 0.25);
+    border-radius: 10px / 100px;
+}
+/* line 147, ../../sass/screen.scss */
+.navbar .navbar-header .navbar-brand:before {
+    left: 1px;
+}
+/* line 150, ../../sass/screen.scss */
+.navbar .navbar-header .navbar-brand:after {
+    right: 1px;
+}
+/* line 154, ../../sass/screen.scss */
+.navbar .navbar-header .navbar-brand > .logo {
+    width: 75px;
+    height: 60px;
+    background-color: #fff;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+}
+/* line 163, ../../sass/screen.scss */
+.navbar .navbar-header .navbar-brand > .logo:before {
+    content: '';
+    display: block;
+    width: 59px;
+    height: 44px;
+    margin: 8px;
+    background-image: url("/static/svg/logo.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* line 178, ../../sass/screen.scss */
+.navbar .navbar-header .navbar-toggle {
+    border: none;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    margin-right: 10px;
+}
+/* line 184, ../../sass/screen.scss */
+.navbar .navbar-header .navbar-toggle:focus, .navbar .navbar-header .navbar-toggle:hover {
+    background-color: transparent;
+}
+/* line 189, ../../sass/screen.scss */
+.navbar .navbar-header .navbar-toggle .icon-bar {
+    background-color: #fff;
+    width: 24px;
+    height: 1px;
+}
+/* line 193, ../../sass/screen.scss */
+.navbar .navbar-header .navbar-toggle .icon-bar + .icon-bar {
+    margin-top: 5px;
+}
+/* line 201, ../../sass/screen.scss */
+.navbar .navbar-collapse {
+    border-color: #0098d7;
+}
+/* line 205, ../../sass/screen.scss */
+.navbar .navbar-nav li:hover {
+    background: #ECECEC;
+}
+/* line 211, ../../sass/screen.scss */
+.navbar .navbar-nav > li > a {
+    color: #fff;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+}
+/* line 217, ../../sass/screen.scss */
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li > a:focus,
+.navbar .navbar-nav > li > a:active {
+    color: #0098d7;
+    outline: none;
+}
+@media (max-width: 768px) {
+    .navbar {
+        height: 80px;
+        overflow: hidden;
+    }
+    /* line 318, ../../sass/screen.scss */
+    .navbar .navbar-header {
+        overflow: visible;
+    }
+    /* line 321, ../../sass/screen.scss */
+    .navbar .navbar-header .navbar-brand {
+        height: 80px;
+        width: 100px;
+        margin-left: 0px;
+        margin-right: 40px;
+    }
+    /* line 327, ../../sass/screen.scss */
+    .navbar .navbar-header .navbar-brand:before, .navbar .navbar-header .navbar-brand:after {
+        height: 80px;
+    }
+    /* line 333, ../../sass/screen.scss */
+    .navbar .navbar-header .navbar-brand > .logo {
+        width: 100px;
+        height: 80px;
+    }
+    /* line 337, ../../sass/screen.scss */
+    .navbar .navbar-header .navbar-brand > .logo:before {
+        width: 76px;
+        height: 56px;
+        margin: 12px;
+    }
+    /* line 346, ../../sass/screen.scss */
+    .navbar .navbar-nav > li > a {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    /* line 353, ../../sass/screen.scss */
+    .navbar .navbar-nav.navbar-right > li > a {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    /* line 357, ../../sass/screen.scss */
+    .navbar .navbar-nav.navbar-right > li > a:hover > .icon-home, .navbar .navbar-nav.navbar-right > li > a:focus > .icon-home, .navbar .navbar-nav.navbar-right > li > a:active > .icon-home {
+        background-image: url("/static/svg/icon-home-blue1.svg");
+    }
 
+    /* line 368, ../../sass/screen.scss */
+    .navbar .navbar-nav .icon-li {
+        width: 80px;
+    }
+    /* line 371, ../../sass/screen.scss */
+    .navbar .navbar-nav .icon-li a {
+        text-align: center;
+        padding-bottom: 23.5px;
+    }
+
+    /* line 378, ../../sass/screen.scss */
+    .navbar-right {
+        margin-right: 0px;
+    }
+}
+@media (max-width: 992px) {
+    .navbar .navbar-header .navbar-brand {
+        margin-right: 50px;
+    }
+    /* line 432, ../../sass/screen.scss */
+    .navbar .navbar-nav > li > a {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    /* line 437, ../../sass/screen.scss */
+    .navbar .navbar-nav.navbar-right > li > a {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .navbar .navbar-header .navbar-brand {
+        margin-right: 60px;
+    }
+    /* line 493, ../../sass/screen.scss */
+    .navbar .navbar-nav > li > a {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    /* line 498, ../../sass/screen.scss */
+    .navbar .navbar-nav.navbar-right > li > a {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}

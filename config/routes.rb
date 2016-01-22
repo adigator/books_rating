@@ -21,10 +21,13 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'books' => 'books#index'
-  get 'books/:id' => 'books#show', as: :book
+  get 'book/:id' => 'books#show', as: :book
   get 'add/book' => 'books#new'
 
   resources :books do
+    collection do
+      get 'search'
+    end
     resources :reviews, except: [:show, :index]
   end
 

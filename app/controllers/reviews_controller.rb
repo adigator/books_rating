@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  n
+
   def destroy
     @review.destroy
     respond_to do |format|

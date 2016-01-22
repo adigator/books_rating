@@ -1,20 +1,23 @@
 <%= form_for @book, html: { multipart: true } do |f| %>
   <%= f.label :image %>
   <%= f.file_field :image %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
   <%= f.label :year %>
   <%= f.text_field :year %>
-    <%= f.label :publisher %>
-    <%= f.text_field :publisher %>
-    <%= f.label :genre %>
-    <%= f.text_field :genre %>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-    <%= f.label :country %>
-    <%= f.text_field :country %>
-    <%= f.submit 'Dodaj książkę',class:'btn-submit' %>
-    <%= f.select(:author_id, @authors.map {|p| [p.name,p.id]},
-                 { :prompt => 'Wybierz autorow'},
-                 { :multiple => true, :size => 5, :id => 'dropdown' }) %>
+  <%= f.label :publisher %>
+  <%= f.text_field :publisher %>
+  <%= f.label :genre %>
+  <%= f.text_field :genre %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :country %>
+  <%= f.text_field :country %>
+  <%= f.label :author_ids %>
+  <%= f.select(:author_ids, @authors.map {|p| [p.name,p.id]},
+               { :prompt => 'Wybierz autorow'},
+               { :multiple => true, :size => 5, :class => 'sel-custom' }) %>
+  <%= f.submit 'Dodaj książkę',class:'btn-submit' %>
+
+
 <% end %>

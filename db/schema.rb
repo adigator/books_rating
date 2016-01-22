@@ -11,11 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121212250) do
+ActiveRecord::Schema.define(version: 20160122112939) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "name"
     t.string   "surname"
+    t.float    "rating"
+    t.integer  "rates"
     t.string   "country"
     t.integer  "book_id"
     t.datetime "created_at",         null: false
@@ -64,7 +66,6 @@ ActiveRecord::Schema.define(version: 20160121212250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.integer  "movie_id"
     t.integer  "book_id"
   end
 

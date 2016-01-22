@@ -5,7 +5,9 @@
 <%= @book.genre %>
 <%= @book.description %>
 <%= @book.country %>
-<% @authors.each do |aut| %>
+<div class="star-rating" data-score= <%= @avg_review %> ></div>
+<%= "#{@reviews.length} ocen" %>
+<% @book.authors.each do |aut| %>
     <%= link_to aut.name + " " + aut.surname, author_path(aut) %>
 <% end %>
 <% if current_user  %>
@@ -20,7 +22,9 @@
     <h3>Nie ma jeszcze recenzji ;( </h3>
 <% else %>
     <% @reviews.each do |review| %>
-        <%= review.rating %>
+        <% @a = User.find review.user_id %>
+        <%= @a.username %>
+        <div class="star-rating" data-score= <%= review.rating %> ></div>
         <%= review.comment %>
     <% end %>
 <% end %>

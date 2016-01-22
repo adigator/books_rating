@@ -16,6 +16,14 @@
 //= require select2
 //= require_tree .
 $(document).ready(function(){
-    $( "#dropdown" ).select2();
+    $(".sel-custom").select2();
+    $(".star-rating").raty({
+        path: '/assets/',
+        readOnly: true,
+        score: function(){
+            return $(this).attr('data-score');
+        }
+
+    });
 
 });

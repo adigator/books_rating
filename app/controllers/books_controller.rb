@@ -1,6 +1,15 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:new, :edit, :update, :destroy]
+
+  def search
+    if params[:search].present?
+      @books = Book.search(params[:search])
+    else
+      @books = Book.all
+    end
+  end
+
   def index
     @books = Book.all
   end
@@ -29,13 +38,18 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
-    @authors = Author.where(:id => @book.author_id)
     @reviews = Review.where(book_id: @book.id).order("created_at DESC")
+
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:rating).round(2)
+    end
+
   end
 
   def update
-    @authors = Author.all
+
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: 'Ksiazka poprawiona.' }
@@ -61,6 +75,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
   def book_params
-    params.require(:book).permit(:title, :year, :publisher, :genre, :description, :country, :image, :author_id => [])
+    params.require(:book).permit(:title, :year, :publisher, :genre, :description, :country, :image, :author_ids => [])
   end
 end
