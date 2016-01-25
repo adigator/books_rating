@@ -1,9 +1,12 @@
 <% @books.each do |book| %>
     <%= link_to book.title, book_path(book) %>
-    <%= image_tag(book.image.url(:medium), {:alt => 'book_cover_' + book.id.to_s }) %>
+    <%= image_tag(book.image.url, {:alt => 'book_cover_' + book.id.to_s }) %>
     <%= book.year %>
     <%= book.publisher %>
     <%= book.genre %>
     <%= book.description %>
     <%= book.country %>
+    <% book.authors.each do |aut| %>
+        <%= link_to aut.name + " " + aut.surname, author_path(aut) %>
+    <% end %>
 <% end %>

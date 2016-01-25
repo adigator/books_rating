@@ -16,8 +16,6 @@ ActiveRecord::Schema.define(version: 20160122112939) do
   create_table "authors", force: :cascade do |t|
     t.string   "name"
     t.string   "surname"
-    t.float    "rating"
-    t.integer  "rates"
     t.string   "country"
     t.integer  "book_id"
     t.datetime "created_at",         null: false

@@ -25,6 +25,9 @@
       <ul class="nav navbar-nav">
         <li><%= link_to 'BAZA KSIĄŻEK', books_path %></li>
         <li><%= link_to 'BAZA AUTORÓW', authors_path %></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <% if current_user && current_user.admin? %>
             <li class="nick"><%= link_to "admin panel", root_path %></li>
         <% end %>
@@ -38,12 +41,7 @@
         <% end %>
       </ul>
 
-      <%= form_tag search_books_path, method: :get, class: "nav navbar-form navbar-right", role: "search" do %>
-          <p>
-            <%= text_field_tag :search, params[:search], class: "form-control" %>
-            <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
-          </p>
-      <% end %>
+
     </div>
   </div>
 </nav>
@@ -51,6 +49,18 @@
 
 
 <%= yield %>
+
+<footer>
+  <div class="footer footer-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 col-md-4 col-lg-4"><p class="footer-left">www.mól-książkowy.pl</p></div>
+        <div class="col-sm-4 col-md-4 col-lg-4"><p class="footer-center"></p></div>
+        <div class="col-sm-4 col-md-4 col-lg-4"><p class="footer-right">All Rights Reserved, 2015</p></div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>

@@ -14,11 +14,23 @@
  *= require_self
  *= require select2
  */
+@font-face {
+    font-family: cabin-regular; /*a name to be used later*/
+    src: url('/assets/fonts/Cabin-Regular.otf'); /*URL to font*/
+}
+
+body {
+    padding-top:120px;
+    background-color: #1c1c1e;
+    color: #fff;
+    font-family: 'cabin-regular';
+}
 .navbar {
-    background-color: #04a7ec;
+    background-color: #000;
     margin-bottom: 0;
     border-bottom: 0;
     min-height: 60px;
+    text-transform: uppercase;
 }
 /* line 122, ../../sass/screen.scss */
 .navbar .navbar-header {
@@ -33,35 +45,18 @@
     position: relative;
     z-index: 5;
 }
-/* line 133, ../../sass/screen.scss */
-.navbar .navbar-header .navbar-brand:before, .navbar .navbar-header .navbar-brand:after {
-    content: '';
-    display: block;
-    position: absolute;
-    z-index: 1;
-    height: 60px;
-    width: 8px;
-    top: 0;
-    box-shadow: 0px 0px 24.65px 4.35px rgba(0, 0, 0, 0.25);
-    border-radius: 10px / 100px;
-}
-/* line 147, ../../sass/screen.scss */
-.navbar .navbar-header .navbar-brand:before {
-    left: 1px;
-}
-/* line 150, ../../sass/screen.scss */
-.navbar .navbar-header .navbar-brand:after {
-    right: 1px;
-}
-/* line 154, ../../sass/screen.scss */
+
 .navbar .navbar-header .navbar-brand > .logo {
     width: 75px;
     height: 60px;
-    background-color: #fff;
+    background-color: #000;
     position: absolute;
     z-index: 3;
     top: 0;
     left: 0;
+}
+.navbar .navbar-header .navbar-brand > .logo:hover{
+    background-color: #fff;
 }
 /* line 163, ../../sass/screen.scss */
 .navbar .navbar-header .navbar-brand > .logo:before {
@@ -70,7 +65,7 @@
     width: 59px;
     height: 44px;
     margin: 8px;
-    background-image: url("/static/svg/logo.svg");
+    background-image: url("logo.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -102,21 +97,25 @@
 }
 /* line 205, ../../sass/screen.scss */
 .navbar .navbar-nav li:hover {
-    background: #ECECEC;
+    background: #fff;
 }
 /* line 211, ../../sass/screen.scss */
 .navbar .navbar-nav > li > a {
     color: #fff;
     letter-spacing: 1px;
     padding: 10px 20px;
+    min-height:60px;
+    line-height: 40px;
+
 }
 /* line 217, ../../sass/screen.scss */
 .navbar .navbar-nav > li > a:hover,
 .navbar .navbar-nav > li > a:focus,
 .navbar .navbar-nav > li > a:active {
-    color: #0098d7;
+    color: #000;
     outline: none;
 }
+
 @media (max-width: 768px) {
     .navbar {
         height: 80px;
@@ -160,10 +159,7 @@
         padding-left: 15px;
         padding-right: 15px;
     }
-    /* line 357, ../../sass/screen.scss */
-    .navbar .navbar-nav.navbar-right > li > a:hover > .icon-home, .navbar .navbar-nav.navbar-right > li > a:focus > .icon-home, .navbar .navbar-nav.navbar-right > li > a:active > .icon-home {
-        background-image: url("/static/svg/icon-home-blue1.svg");
-    }
+
 
     /* line 368, ../../sass/screen.scss */
     .navbar .navbar-nav .icon-li {
@@ -180,30 +176,71 @@
         margin-right: 0px;
     }
 }
-@media (max-width: 992px) {
-    .navbar .navbar-header .navbar-brand {
-        margin-right: 50px;
+.footer {
+    background: #000;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: 'cabin-regular';
+    color: #909090;
+}
+/* line 227, ../../sass/screen.scss */
+.footer .row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+/* line 230, ../../sass/screen.scss */
+.footer .row p {
+    line-height: 31px;
+    margin: 0px;
+}
+/* line 234, ../../sass/screen.scss */
+.footer .row .footer-left {
+    text-align: left;
+}
+@media (max-width: 768px) {
+    /* line 234, ../../sass/screen.scss */
+    .footer .row .footer-left {
+        display: none;
     }
+}
+/* line 241, ../../sass/screen.scss */
+.footer .row .footer-center {
+    background-image: url("fttr.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 31px;
+    padding: 0px;
+}
+/* line 250, ../../sass/screen.scss */
+.footer .row .footer-right {
+    text-align: right;
+}
+@media (max-width: 768px) {
+    /* line 250, ../../sass/screen.scss */
+    .footer .row .footer-right {
+        display: none;
+    }
+}
+
+
+@media (max-width: 992px) {
+
     /* line 432, ../../sass/screen.scss */
     .navbar .navbar-nav > li > a {
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-    /* line 437, ../../sass/screen.scss */
-    .navbar .navbar-nav.navbar-right > li > a {
         padding-left: 15px;
         padding-right: 15px;
     }
+    /* line 437, ../../sass/screen.scss */
+    .navbar .navbar-nav.navbar-right > li > a {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
 }
 @media screen and (min-width: 1200px) {
-    .navbar .navbar-header .navbar-brand {
-        margin-right: 60px;
-    }
+
     /* line 493, ../../sass/screen.scss */
-    .navbar .navbar-nav > li > a {
-        padding-left: 40px;
-        padding-right: 40px;
-    }
+
     /* line 498, ../../sass/screen.scss */
     .navbar .navbar-nav.navbar-right > li > a {
         padding-left: 20px;
