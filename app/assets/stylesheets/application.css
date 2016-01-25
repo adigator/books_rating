@@ -14,6 +14,10 @@
  *= require_self
  *= require select2
  */
+* {
+    font-size:14px;
+
+}
 @font-face {
     font-family: cabin-regular; /*a name to be used later*/
     src: url('/assets/fonts/Cabin-Regular.otf'); /*URL to font*/
@@ -25,10 +29,13 @@ body {
     color: #fff;
     font-family: 'cabin-regular';
     height:100%;
-
+    font-size: 14px;
 }
 input {
     color:#000;
+}
+.view {
+    min-height: calc(100vh - 141px);
 }
 .row-equal-heights{
     display: table;
@@ -61,6 +68,11 @@ input {
 }
 
 .navbar .navbar-header .navbar-brand > .logo {
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    -ms-transition: background 0.5s linear;
+    transition: background 0.5s linear;
     width: 75px;
     height: 60px;
     background-color: #000;
@@ -71,6 +83,11 @@ input {
 }
 .navbar .navbar-header .navbar-brand > .logo:hover{
     background-color: #fff;
+    -webkit-transition: background 0.7s linear;
+    -moz-transition: background 0.7s linear;
+    -o-transition: background 0.7s linear;
+    -ms-transition: background 0.7s linear;
+    transition: background 0.7s linear;
 }
 /* line 163, ../../sass/screen.scss */
 .navbar .navbar-header .navbar-brand > .logo:before {
@@ -108,7 +125,20 @@ input {
 /* line 201, ../../sass/screen.scss */
 
 /* line 205, ../../sass/screen.scss */
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li > a:focus,
+.navbar .navbar-nav > li > a:active {
+    transition: none;
+    color: #000;
+    outline: none;
+
+}
 .navbar .navbar-nav li:hover {
+    -webkit-transition: background 0.7s linear;
+    -moz-transition: background 0.7s linear;
+    -o-transition: background 0.7s linear;
+    -ms-transition: background 0.7s linear;
+    transition: background 0.7s linear;
     background: #fff;
 }
 /* line 211, ../../sass/screen.scss */
@@ -121,12 +151,7 @@ input {
 
 }
 /* line 217, ../../sass/screen.scss */
-.navbar .navbar-nav > li > a:hover,
-.navbar .navbar-nav > li > a:focus,
-.navbar .navbar-nav > li > a:active {
-    color: #000;
-    outline: none;
-}
+
 
     @media (max-width: 768px) {
     .navbar {
@@ -194,6 +219,13 @@ input {
     /* line 378, ../../sass/screen.scss */
 
 }
+.navbar .navbar-nav > li {
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    -ms-transition: background 0.5s linear;
+    transition: background 0.5s linear;
+}
 .search-bar{
     padding-top:30px;
     padding-bottom:30px;
@@ -229,16 +261,37 @@ input {
     color:red;
 }
 .heading-rank > a:hover {
-
+    -webkit-transition: color 0.7s linear;
+    -moz-transition: color 0.7s linear;
+    -o-transition: color 0.7s linear;
+    -ms-transition: color 0.7s linear;
+    transition: color 0.7s linear;
     color:white;
 }
+.ranking-image {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height:250px;
+    width: 180px;
+    margin:0px auto;
+}
 .book {
+    min-height: 540px;
+    word-wrap:break-word;
     background: black;
     margin-bottom: 50px;
-    font-size:16px;
+    font-size:16px !important;
     padding-left:15px;
     padding-right:15px;
     padding-bottom:30px;
+}
+.at {
+
+    padding-top: 30px;
+}
+.authors > p{
+    margin-bottom:0px;
+
 }
 .authors > a {
     color:white;
@@ -249,8 +302,17 @@ input {
     color: red;
 
 }
+.aut-book > p > a {
+    color:white;
+    text-decoration:none;
+
+}
+.aut-book > p > a:hover {
+    color: red;
+
+}
 .book-image {
-    background-size:cover;
+    background-size:contain;
     background-repeat: no-repeat;
     width:200px;
     height:250px;
@@ -270,9 +332,56 @@ input {
 .book-title > a:hover {
     color:red;
 }
+.author-name {
+    background: black;
+    height:50px;
+}
+.author-name > p > a {
+    color:white;
+    text-decoration:none;
+    font-size:22px;
+    line-height:50px;
+}
+.author-name > p > a:hover {
+    color:red;
+}
 .description > p {
     margin-top:15px;
     margin-bottom:15px;
+}
+.ranking-row {
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    background: #000;
+    margin-bottom:30px
+}
+.ranking-params {
+    word-wrap:break-word;
+}
+.ranking-params > h1 > a{
+    text-decoration: none;
+    color: white;
+    font-size: 40px;
+}
+.ranking-params > h1 > a:hover{
+    color: red;
+}
+.ranking-params > h2{
+    color: red;
+    font-size: 35px;
+}
+.thors > span > a {
+    text-decoration: none;
+    color:white;
+}
+.thors > span > a:hover {
+    color:red;
+}
+.rate{
+    font-size: 100px;
+    line-height: 200px;
+
 }
 .footer {
     background: #000;
@@ -295,6 +404,7 @@ input {
 .footer .row .footer-left {
     text-align: left;
 }
+
 @media (max-width: 768px) {
     /* line 234, ../../sass/screen.scss */
     body {
@@ -304,6 +414,9 @@ input {
     .ccc {
         min-height: calc(100vh - 163px);
 
+    }
+    .view {
+        min-height: calc(100vh - 163px);
     }
     .footer .row .footer-left {
         display: none;
@@ -322,6 +435,45 @@ input {
 .footer .row .footer-right {
     text-align: right;
 }
+.pagination a, .pagination span.current, .pagination span.gap {
+    float: left;
+    padding: 0 14px;
+    line-height: 38px;
+    text-decoration: none;
+    background-color: white;
+    border: 1px solid #DDD;
+    border-left-width: 0;
+}
+
+.pagination {
+    border-left: 1px solid #ddd;
+}
+.pagination .first{
+    padding : 0;
+    float: none;
+    border: none;
+}
+.pagination .prev {
+    padding : 0;
+    float: none;
+    border: none;
+}
+.pagination .page{
+    padding : 0;
+    float: none;
+    border: none;
+}
+.pagination .next{
+    padding : 0;
+    float: none;
+    border: none;
+}
+.pagination .last{
+    padding : 0;
+    float: none;
+    border: none;
+}
+
 @media (max-width: 768px) {
     /* line 250, ../../sass/screen.scss */
     .footer .row .footer-right {

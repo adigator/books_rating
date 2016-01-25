@@ -1,3 +1,4 @@
+<div class="container view">
 <%= @user.id %>
 <%= @user.username %>
 <%= @user.email %>
@@ -9,3 +10,4 @@
         <%= link_to "Usun", @user, :method => :delete, :data => {:confirm => "czy na pewno?"}, :class => "gugu"  %>
     <% end %>
 <% end %>
+</div>

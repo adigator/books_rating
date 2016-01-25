@@ -1,5 +1,44 @@
-<% @authors.each do |author| %>
-    <%= link_to author.name + " " + author.surname, author_path(author) %>
-    <%= image_tag(author.image.url, {:alt => 'author_photo_' + author.id.to_s }) %>
-    <%= author.country %>
-<% end %>
+<div class="container view" >
+  <div class="col-sm-12 search-bar ">
+  <%= form_tag search_authors_path, method: :get, class: "", role: "search" do %>
+      <div class="row ">
+        <div class="col-sm-4 col-sm-offset-3 col-xs-10"><%= text_field_tag :search, params[:search], class: "form-control" %></div><div class="text-center col-sm-2 col-xs-2"><%= submit_tag "Szukaj", name: nil, class: "btn btn-default" %></div>
+
+      </div>
+  <% end %>
+</div>
+   <div class="row text-center">
+    <% @authors.each do |author| %>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 text-center ">
+          <div class="book at">
+            <%= link_to author_path(author) do %>
+                <div class='book-image' style="background-image: url('<%= author.image.url %>')"></div>
+            <% end %>
+            <div class="author-name"><p><%= link_to author.name + " " + author.surname, author_path(author) %></p></div>
+            <div class="row">
+              <div class="col-xs-6 text-right"><span>Imię: </span></div><div class="col-xs-6 text-left"><%= author.name %></div>
+              <div class="col-xs-6 text-right"><span>Nazwisko: </span></div><div class="col-xs-6 text-left"><%= author.surname %></div>
+              <div class="col-xs-6 text-right"><span>Pochodzenie: </span></div><div class="col-xs-6 text-left"><%= author.country %></div>
+              <div class="col-xs-6 text-right"><span>Książki: </span></div>
+              <div class="col-xs-6 text-left authors aut-book">
+                <% iter = 0 %>
+                <% author.books.each do |aut| %>
+                    <% if iter == 4 %>
+                        <p><%= link_to "Pokaż wszystkie", author_path(author) %></p>
+                    <% else %>
+                        <% iter = iter + 1 %>
+                        <p title="<%= aut.title %>"><%= link_to truncate(aut.title, :length => 18), book_path(aut) %></p>
+                    <% end %>
+                <% end %>
+                    </div>
+
+
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+
+

@@ -12,7 +12,7 @@ class BooksController < ApplicationController
 
   def ranking
 
-      @books = Book.all
+      @books = Book.page(params[:page]).per(50)
       @ranked = {}
       @ranked_sorted = {}
 
@@ -32,13 +32,13 @@ class BooksController < ApplicationController
         puts "#{elem[0]}, #{elem[1]}"
       }
 
-      @ranked = @ranked_sorted.to_a.reverse.to_h
+
 
 
   end
 
   def index
-    @books = Book.all
+    @books = Book.page(params[:page]).per(3)
   end
 
   def new
@@ -77,13 +77,18 @@ class BooksController < ApplicationController
 
   def show
     @reviews = Review.where(book_id: @book.id).order("created_at DESC")
-
+    @rat = false
     if @reviews.blank?
       @avg_review = 0
     else
       @avg_review = @reviews.average(:rating).round(2)
     end
 
+    @reviews.each do |rev|
+      if rev.user_id = current_user.id
+        @rat = true
+      end
+    end
   end
 
   def update

@@ -1,5 +1,7 @@
+<div class="container view">
 <%= form_for(:session, url: login_path) do |f| %>
     <%= f.email_field :email,:placeholder => "E-mail" %>
     <%= f.password_field :password,:placeholder => "Hasło" %>
     <%= f.submit "Zaloguj",class:"btn-submit" %>
 <% end %>
+</div>

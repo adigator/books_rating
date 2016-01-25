@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  get 'books' => 'books#index'
+  Rails.application.routes.draw do
+    ;get 'books' => "books#index"
+  end
   get 'book/:id' => 'books#show', as: :book
   get 'users' => 'users#index'
   get 'add/book' => 'books#new', as: :book_new
@@ -35,9 +37,13 @@ Rails.application.routes.draw do
 
   post 'add/books' => 'books#create'
   get 'authors' => 'authors#index'
-  get 'authors/:id' => 'authors#show', as: :author
+  get 'author/:id' => 'authors#show', as: :author
   get 'add/author' => 'authors#new', as: :author_new
-  resources :authors
+  resources :authors do
+    collection do
+      get 'search'
+    end
+  end
   post 'add/authors' => 'authors#create'
   # Example resource route with options:
   #   resources :products do

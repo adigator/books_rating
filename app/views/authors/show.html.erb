@@ -1,3 +1,4 @@
+<div class="container view">
 <%= @author.name %>
 <%= @author.surname %>
 <%= image_tag( @author.image.url, {:alt => 'author_photo_' + @author.id.to_s }) %>
@@ -11,3 +12,4 @@
     <%= link_to "Edytuj", edit_author_path(@author), :class => "gugu"  %>
     <%= link_to "Usun", @author, :method => :delete, :data => {:confirm => "czy na pewno?"}, :class => "gugu"  %>
 <% end %>
+</div>

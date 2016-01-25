@@ -1,3 +1,4 @@
+<div class="container view">
 <%= @book.title %>
 <%= image_tag(@book.image.url, {:alt => 'book_cover_' + @book.id.to_s }) %>
 <%= @book.year %>
@@ -10,9 +11,8 @@
 <% @book.authors.each do |aut| %>
     <%= link_to aut.name + " " + aut.surname, author_path(aut) %>
 <% end %>
-<% if current_user  %>
+<% if current_user && (not @rat) %>
     <%= link_to "Napisz recenzje", new_book_review_path(@book), :class => "gugu"  %>
-
 <% end %>
 <%= @book.title %>
 <% if @reviews.blank? && current_user %>
@@ -24,7 +24,7 @@
     <% @reviews.each do |review| %>
         <% @a = User.find review.user_id %>
         <%= @a.username %>
-        <div class="star-rating" data-score= <%= review.rating %> ></div>
+        <div class="star-rating" data-score="<%= review.rating %>" ></div>
         <%= review.comment %>
     <% end %>
 <% end %>
@@ -32,3 +32,4 @@
     <%= link_to "Edytuj", edit_book_path(@book), :class => "gugu"  %>
     <%= link_to "Usun", @book, :method => :delete, :data => {:confirm => "czy na pewno?"}, :class => "gugu"  %>
 <% end %>
+</div>

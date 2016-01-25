@@ -1,18 +1,29 @@
 <div class="container">
 
   <% @ranked.each_with_index do |(id_of_book, book_rate), index| %>
-      <% @b = Book.find(id_of_book) %>
-      pozycja <%= index + 1 %>
-      <%= link_to @b.title, book_path(@b) %>
-      <%= image_tag(@b.image.url, {:alt => 'book_cover_' + @b.id.to_s }) %>
-      <%= @b.year %>
-      <%= @b.publisher %>
-      <%= @b.genre %>
-      <%= @b.description %>
-      <%= @b.country %>
-      <% @b.authors.each do |aut| %>
-          <%= link_to aut.name + " " + aut.surname, author_path(aut) %>
-      <% end %>
-      <%= book_rate %>
+      <div class="row ranking-row" >
+        <% @b = Book.find(id_of_book) %>
+        <div class="col-lg-2 col-md-2 col-xs-6 rate text-center"><%= index + 1 %></div>
+        <div class="col-lg-2 col-md-3 col-xs-6 text-center">
+          <%= link_to book_path(@b) do %>
+              <div class='ranking-image ' style="background-image: url('<%= @b.image.url %>')"></div>
+          <% end %></div>
+        <div class="col-lg-8 col-md-7 col-xs-12 ranking-params">
+          <h1 class="hidden-md hidden-sm hidden-xs" title="<%= @b.title %>"><%= link_to truncate(@b.title, :length => 30), book_path(@b) %></h1>
+          <h1 class="hidden-lg hidden-xs hidden-sm" title="<%= @b.title %>"><%= link_to truncate(@b.title, :length => 20), book_path(@b) %></h1>
+          <h1 class="hidden-md hidden-lg" style="padding-top:15px;"> <%= link_to @b.title, book_path(@b) %></h1>
+          <h2><%= book_rate %></h2>
+          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4  text-right">Opis :</div><div class="col-lg-10 hidden-md hidden-sm hidden-xs text-left"><%= truncate(@b.description, :length => 204) %></div><div class="hidden-lg hidden-xs hidden-sm col-md-9 text-left"><%= truncate(@b.description, :length => 140) %></div><div class="hidden-lg hidden-md col-xs-8 text-left"><%= @b.description %></div></div>
+          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Autor :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left thors"><% @b.authors.each do |aut| %>
+                <span><%= link_to aut.name + " " + aut.surname, author_path(aut) %></span>
+            <% end %></div></div>
+          <div class="row"><div class="col-lg-2 hidden-md hidden-sm hidden-xs  text-right">Rok wydania :</div><div class="hidden-lg col-md-3 col-xs-4 text-right">Rok :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= @b.year %></div></div>
+          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Wydawca :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= @b.publisher %></div></div>
+          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Gatunek :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= @b.genre %></div></div>
+          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Kraj :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= @b.country %></div></div>
+
+      </div>
+      </div>
   <% end %>
+  <%= paginate @books %>
 </div>

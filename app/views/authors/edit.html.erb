@@ -1,3 +1,4 @@
+<div class="container view">
 <%= form_for @author, html: { multipart: true } do |f| %>
     <%= f.label :image %>
     <%= f.file_field :image , :style => "color:#fff"%>
@@ -12,4 +13,4 @@
 
 
 <%= link_to 'Powrót', authors_path, :class => "gugu"  %>
-
+</div>
