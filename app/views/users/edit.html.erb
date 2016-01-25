@@ -1,0 +1,18 @@
+<%= form_for @user, html: { multipart: true } do |f| %>
+
+    <%= f.label :username %>
+    <%= f.text_field :username,:placeholder => "Nazwa użytkownika" %>
+    <%= f.label :email%>
+    <%= f.email_field :email,:placeholder => "E-mail" %>
+    <%= f.label :password %>
+    <%= f.password_field :password,:placeholder => "Hasło" %>
+    <% if current_user && current_user.admin? %>
+        <%= f.label :role %>
+        <%= f.text_field :role,:placeholder => "Rola" %>
+    <% end %>
+    <%= f.submit "Edytuj",class:"btn-submit" %>
+<% end %>
+
+
+<%= link_to 'Powrót', user_path(@user), :class => "gugu"  %>
+

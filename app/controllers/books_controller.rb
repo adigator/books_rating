@@ -10,6 +10,33 @@ class BooksController < ApplicationController
     end
   end
 
+  def ranking
+
+      @books = Book.all
+      @ranked = {}
+      @ranked_sorted = {}
+
+      @books.each do |book|
+        @reviews = Review.where(book_id: book.id)
+        if @reviews.blank?
+          @avg_review = 0
+        else
+          @avg_review = @reviews.average(:rating).round(2)
+        end
+        @ranked[book.id] = @avg_review
+      end
+
+
+      @ranked.sort{|a,b| a[1]<=>b[1]}.each { |elem|
+        @ranked_sorted[elem[0]] = elem[1]
+        puts "#{elem[0]}, #{elem[1]}"
+      }
+
+      @ranked = @ranked_sorted.to_a.reverse.to_h
+
+
+  end
+
   def index
     @books = Book.all
   end
@@ -26,10 +53,21 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @authors = Author.all
+
     respond_to do |format|
       if @book.save
+        @book.author_ids.each do |a|
+            @at = Author.find(a)
+            asd = @at.book_ids
+            asd.push @book_id
+            @at.book_ids = asd
+            puts asd
+            @at.save
+        end
+
         format.html { redirect_to @book, notice: 'Utworzono książkę.' }
         format.json { render :show, status: :created, location: @book }
+
       else
         format.html { render :new }
         format.json { render json: @book.errors, status: :unprocessable_entity }

@@ -1,0 +1,11 @@
+<%= @user.id %>
+<%= @user.username %>
+<%= @user.email %>
+<%= @user.role %>
+
+<% if current_user %>
+    <%= link_to "Edytuj", edit_user_path(@user), :class => "gugu"  %>
+    <% if current_user.admin? %>
+        <%= link_to "Usun", @user, :method => :delete, :data => {:confirm => "czy na pewno?"}, :class => "gugu"  %>
+    <% end %>
+<% end %>

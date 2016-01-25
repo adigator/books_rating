@@ -20,10 +20,24 @@
 }
 
 body {
-    padding-top:120px;
+    padding-top:60px;
     background-color: #1c1c1e;
     color: #fff;
     font-family: 'cabin-regular';
+    height:100%;
+
+}
+input {
+    color:#000;
+}
+.row-equal-heights{
+    display: table;
+
+}
+.row-equal-heights > [class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
 }
 .navbar {
     background-color: #000;
@@ -92,9 +106,7 @@ body {
     margin-top: 5px;
 }
 /* line 201, ../../sass/screen.scss */
-.navbar .navbar-collapse {
-    border-color: #0098d7;
-}
+
 /* line 205, ../../sass/screen.scss */
 .navbar .navbar-nav li:hover {
     background: #fff;
@@ -116,15 +128,24 @@ body {
     outline: none;
 }
 
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
     .navbar {
         height: 80px;
-        overflow: hidden;
+
     }
+     .navbar > .container{
+        background: #000;
+    }
+        .navbar-collapse { max-height: 100% !important; }
+        .navbar .navbar-header .navbar-toggle{
+            margin-top: 24.5px;
+            margin-bottom: 24.5px;
+        }
     /* line 318, ../../sass/screen.scss */
     .navbar .navbar-header {
         overflow: visible;
     }
+
     /* line 321, ../../sass/screen.scss */
     .navbar .navbar-header .navbar-brand {
         height: 80px;
@@ -151,13 +172,12 @@ body {
     .navbar .navbar-nav > li > a {
         padding-left: 20px;
         padding-right: 20px;
-        padding-top: 30px;
-        padding-bottom: 30px;
+
     }
     /* line 353, ../../sass/screen.scss */
     .navbar .navbar-nav.navbar-right > li > a {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
 
@@ -172,9 +192,87 @@ body {
     }
 
     /* line 378, ../../sass/screen.scss */
-    .navbar-right {
-        margin-right: 0px;
-    }
+
+}
+.search-bar{
+    padding-top:30px;
+    padding-bottom:30px;
+}
+.home {
+    background-image: url('pexels-photo (1).jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.ccc {
+    min-height: calc(100vh - 141px);
+    color: #fff;
+}
+.head-container {
+    padding-top:80px;
+
+
+}
+.heading {
+    font-size: 70px;
+    text-shadow: 5px 5px 8px #000;
+
+}
+.heading-rank {
+
+    text-shadow: 5px 5px 8px #000;
+
+}
+
+.heading-rank > a {
+    text-decoration:none;
+    color:red;
+}
+.heading-rank > a:hover {
+
+    color:white;
+}
+.book {
+    background: black;
+    margin-bottom: 50px;
+    font-size:16px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom:30px;
+}
+.authors > a {
+    color:white;
+    text-decoration:none;
+
+}
+.authors > a:hover {
+    color: red;
+
+}
+.book-image {
+    background-size:cover;
+    background-repeat: no-repeat;
+    width:200px;
+    height:250px;
+    background-position: center;
+    margin: 0px auto;
+}
+.book-title {
+    background: black;
+    height:50px;
+}
+.book-title > a {
+    color:white;
+    text-decoration:none;
+    font-size:22px;
+    line-height:50px;
+}
+.book-title > a:hover {
+    color:red;
+}
+.description > p {
+    margin-top:15px;
+    margin-bottom:15px;
 }
 .footer {
     background: #000;
@@ -199,6 +297,14 @@ body {
 }
 @media (max-width: 768px) {
     /* line 234, ../../sass/screen.scss */
+    body {
+        padding-top: 80px;
+    }
+
+    .ccc {
+        min-height: calc(100vh - 163px);
+
+    }
     .footer .row .footer-left {
         display: none;
     }
@@ -223,24 +329,46 @@ body {
     }
 }
 
+@media screen and (min-width: 768px) {
+
+   .navbar-right{
+       margin-right:0px;
+   }
+}
 
 @media (max-width: 992px) {
 
     /* line 432, ../../sass/screen.scss */
     .navbar .navbar-nav > li > a {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 6px;
+        padding-right: 6px;
     }
     /* line 437, ../../sass/screen.scss */
     .navbar .navbar-nav.navbar-right > li > a {
-        padding-left: 12px;
-        padding-right: 12px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+}
+@media screen and (min-width: 992px) {
+
+    /* line 493, ../../sass/screen.scss */
+    .navbar .navbar-nav > li > a {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    /* line 498, ../../sass/screen.scss */
+    .navbar .navbar-nav.navbar-right > li > a {
+        padding-left: 5px;
+        padding-right: 5px;
     }
 }
 @media screen and (min-width: 1200px) {
 
     /* line 493, ../../sass/screen.scss */
-
+    .navbar .navbar-nav > li > a {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
     /* line 498, ../../sass/screen.scss */
     .navbar .navbar-nav.navbar-right > li > a {
         padding-left: 20px;

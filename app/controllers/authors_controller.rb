@@ -27,8 +27,7 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    @author = Author.find(params[:id])
-    @books = Book.where(:id => @author.book_id)
+
   end
 
 
@@ -59,6 +58,6 @@ def set_author
 end
 
 def author_params
-  params.require(:author).permit(:name, :surname, :country, :book_id, :image)
+  params.require(:author).permit(:name, :surname, :country, :book_id, :image,:book_ids => [])
 end
 end

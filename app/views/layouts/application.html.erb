@@ -18,6 +18,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+
       </button>
       <a class="navbar-brand" href="<%= root_path %>"><div class="logo"></div></a>
     </div>
@@ -25,14 +26,17 @@
       <ul class="nav navbar-nav">
         <li><%= link_to 'BAZA KSIĄŻEK', books_path %></li>
         <li><%= link_to 'BAZA AUTORÓW', authors_path %></li>
+        <li class="hidden-lg hidden-xs hidden-md"><%= link_to 'ranking', ranking_path %></li>
+        <li class="hidden-sm"><%= link_to 'ranking książek', ranking_path %></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user && current_user.admin? %>
-            <li class="nick"><%= link_to "admin panel", root_path %></li>
+            <li class="hidden-lg hidden-xs hidden-md"><%= link_to 'admin', admin_path %></li>
+            <li class="hidden-sm"><%= link_to 'panel administracyjny', admin_path %></li>
         <% end %>
         <% if current_user %>
-            <li class="nick"><%= link_to current_user.username, root_path %></li>
+            <li class="nick"><%= link_to current_user.username, user_path(current_user) %></li>
 
             <li><%= link_to 'Wyloguj', logout_path, method: 'delete' %></li>
         <% else %>

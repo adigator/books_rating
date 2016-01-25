@@ -1,9 +1,36 @@
-<% @books.each do |book| %>
-    <%= link_to book.title, book_path(book) %>
-    <%= image_tag(book.image.url(:medium), {:alt => 'book_cover_' + book.id.to_s }) %>
-    <%= book.year %>
-    <%= book.publisher %>
-    <%= book.genre %>
-    <%= book.description %>
-    <%= book.country %>
-<% end %>
+<div class="container">
+  <div class="col-sm-12 search-bar ">
+    <%= form_tag search_books_path, method: :get, class: "", role: "search" do %>
+        <div class="row ">
+          <div class="col-sm-4 col-sm-offset-3 col-xs-10"><%= text_field_tag :search, params[:search], class: "form-control" %></div><div class="text-center col-sm-2 col-xs-2"><%= submit_tag "Szukaj", name: nil, class: "btn btn-default" %></div>
+
+        </div>
+    <% end %>
+  </div>
+  <div class="row text-center">
+    <% @books.each do |book| %>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 text-center ">
+          <div class="book">
+            <div class="book-title"><%= link_to book.title, book_path(book) %> </div>
+            <div class="book-image" style="background-image: url('<%= book.image.url %>')"></div>
+            <div class="row">
+              <div class="col-xs-12 description"><p>
+                <%= book.description %>
+              </p></div>
+              <div class="col-xs-6 text-right"><span>Autor: </span></div>
+              <div class="col-xs-6 text-left authors">
+                <% book.authors.each do |aut| %>
+                    <%= link_to aut.name + " " + aut.surname, author_path(aut) %>
+                <% end %></div>
+              <div class="col-xs-6 text-right"><span>Rok wydania: </span></div><div class="col-xs-6 text-left"><%= book.year %></div>
+              <div class="col-xs-6 text-right"><span>Wydawca: </span></div><div class="col-xs-6 text-left"><%= book.publisher %></div>
+              <div class="col-xs-6 text-right"><span>Gatunek: </span></div><div class="col-xs-6 text-left"><%= book.genre %></div>
+              <div class="col-xs-6 text-right"><span>Kraj wydania: </span></div><div class="col-xs-6 text-left"><%= book.country %></div>
+              <div class="col-xs-6 text-right"><span>Rok wydania: </span></div><div class="col-xs-6 text-left"><%= book.year %></div>
+
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

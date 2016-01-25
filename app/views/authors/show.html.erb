@@ -3,8 +3,9 @@
 <%= image_tag( @author.image.url, {:alt => 'author_photo_' + @author.id.to_s }) %>
 
 <%= @author.country %>
-<% @books.each do |book| %>
-    <%= link_to book.title, book_path(book) %>
+<% @author.book_ids.each do |book| %>
+    <% @single_book = Book.find(book) %>
+    <%= link_to @single_book.title, book_path(@single_book) %>
 <% end %>
 <% if current_user && current_user.admin? %>
     <%= link_to "Edytuj", edit_author_path(@author), :class => "gugu"  %>

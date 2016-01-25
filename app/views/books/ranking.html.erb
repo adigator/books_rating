@@ -1,0 +1,18 @@
+<div class="container">
+
+  <% @ranked.each_with_index do |(id_of_book, book_rate), index| %>
+      <% @b = Book.find(id_of_book) %>
+      pozycja <%= index + 1 %>
+      <%= link_to @b.title, book_path(@b) %>
+      <%= image_tag(@b.image.url, {:alt => 'book_cover_' + @b.id.to_s }) %>
+      <%= @b.year %>
+      <%= @b.publisher %>
+      <%= @b.genre %>
+      <%= @b.description %>
+      <%= @b.country %>
+      <% @b.authors.each do |aut| %>
+          <%= link_to aut.name + " " + aut.surname, author_path(aut) %>
+      <% end %>
+      <%= book_rate %>
+  <% end %>
+</div>
