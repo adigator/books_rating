@@ -229,7 +229,8 @@ input {
     padding-bottom:30px;
 }
 .home {
-    background-image: url('pexels-photo (1).jpg');
+    background-image: url('<%= asset_path("pexels-photo (1).jpg") %>');
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -467,7 +468,8 @@ input {
 }
 /* line 241, ../../sass/screen.scss */
 .footer .row .footer-center {
-    background-image: url("fttr.png");
+    background-image: url('<%= asset_path("fttr.png") %>');
+
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
