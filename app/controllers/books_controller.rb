@@ -122,7 +122,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Ksiazka usunieta.' }
+      format.html { redirect_to books_path, notice: 'Ksiazka usunieta.' }
       format.json { head :no_content }
     end
   end
