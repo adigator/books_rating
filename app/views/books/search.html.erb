@@ -2,7 +2,12 @@
   <div class="col-sm-12 search-bar ">
     <%= form_tag search_books_path, method: :get, class: "", role: "search" do %>
         <div class="row ">
-          <div class="col-sm-4 col-sm-offset-3 col-xs-10"><%= text_field_tag :search, params[:search], class: "form-control" %></div><div class="text-center col-sm-2 col-xs-2"><%= submit_tag "Szukaj", name: nil, class: "btn btn-default" %></div>
+          <div class="col-sm-4 col-sm-offset-3 col-xs-10">
+            <%= text_field_tag :search, params[:search], class: "form-control" %>
+          </div>
+          <div class="text-center col-sm-2 col-xs-2 btn-red">
+            <%= submit_tag "Szukaj", class: "btn-red",name: nil %>
+          </div>
 
         </div>
     <% end %>

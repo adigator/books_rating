@@ -1,5 +1,14 @@
 <div class="container view">
-  <%= link_to "Dodaj nową książkę", book_new_path %>
-  <%= link_to "Dodaj nowego autora", author_new_path %>
-  <%= link_to "Zarządzanie użytkownikami", users_path %>
+
+    <%= link_to book_new_path do %>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center btn-red mt30">Dodaj nową książkę</div>
+    <% end %>
+  <%= link_to author_new_path do %>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center btn-red">Dodaj nowego autora</div>
+  <% end %>
+  <%= link_to users_path do %>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center btn-red">Zarządzanie użytkownikami</div>
+  <% end %>
+
+
 </div>

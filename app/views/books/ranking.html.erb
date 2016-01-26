@@ -1,29 +1,52 @@
-<div class="container">
+<div class="container view">
+  <div class="container filter-container">
+  <div class="col-sm-12 filter-bar ">
+    <div class="row ">
+      <%= form_tag ranking_path, method: :get, class: "", role: "filter" do %>
 
-  <% @ranked.each_with_index do |(id_of_book, book_rate), index| %>
+          <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-xs-12">
+            <div class="col-xs-12 col-sm-6 form-filter"><div class="col-xs-4" style="line-height: 34px;"><%= label_tag "Kraj:" %></div><div class="col-xs-8"><%= text_field_tag :country, params[:country], class: "form-control" %></div></div>
+            <div class="col-xs-12 col-sm-6 form-filter"><div class="col-xs-4" style="line-height: 34px;"><%= label_tag "Rok:" %></div><div class="col-xs-8"><%= text_field_tag :year, params[:year], class: "form-control" %></div></div>
+            <div class="col-xs-12 col-sm-6 form-filter"><div class="col-xs-4" style="line-height: 34px;"><%= label_tag "Wydawca:" %></div><div class="col-xs-8"><%= text_field_tag :publisher, params[:publisher], class: "form-control" %></div></div>
+            <div class="col-xs-12 col-sm-6 form-filter"><div class="col-xs-4" style="line-height: 34px;"><%= label_tag "Gatunek:" %></div><div class="col-xs-8"><%= text_field_tag :genre, params[:genre], class: "form-control" %></div></div>
+            <div class="text-center col-xs-12"><%= submit_tag "FILTRUJ", name: nil, class: "btn-red" %></div>
+          </div>
+
+
+
+
+      <% end %>
+    </div>
+  </div>
+  </div>
+
+  <div class="wapp">
+  <% @ranked_sorted.reverse_each.with_index do |(book, book_rate), index| %>
       <div class="row ranking-row" >
-        <% @b = Book.find(id_of_book) %>
+        <% if @ranked_sorted.nil? %>
+          <div class="col-xs-12"><h1>Brak wyników.</h1></div>
+        <% end %>
         <div class="col-lg-2 col-md-2 col-xs-6 rate text-center"><%= index + 1 %></div>
         <div class="col-lg-2 col-md-3 col-xs-6 text-center">
-          <%= link_to book_path(@b) do %>
-              <div class='ranking-image ' style="background-image: url('<%= @b.image.url %>')"></div>
+          <%= link_to book_path(book) do %>
+              <div class='ranking-image ' style="background-image: url('<%= book.image.url %>')"></div>
           <% end %></div>
         <div class="col-lg-8 col-md-7 col-xs-12 ranking-params">
-          <h1 class="hidden-md hidden-sm hidden-xs" title="<%= @b.title %>"><%= link_to truncate(@b.title, :length => 30), book_path(@b) %></h1>
-          <h1 class="hidden-lg hidden-xs hidden-sm" title="<%= @b.title %>"><%= link_to truncate(@b.title, :length => 20), book_path(@b) %></h1>
-          <h1 class="hidden-md hidden-lg" style="padding-top:15px;"> <%= link_to @b.title, book_path(@b) %></h1>
-          <h2><%= book_rate %></h2>
-          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4  text-right">Opis :</div><div class="col-lg-10 hidden-md hidden-sm hidden-xs text-left"><%= truncate(@b.description, :length => 204) %></div><div class="hidden-lg hidden-xs hidden-sm col-md-9 text-left"><%= truncate(@b.description, :length => 140) %></div><div class="hidden-lg hidden-md col-xs-8 text-left"><%= @b.description %></div></div>
-          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Autor :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left thors"><% @b.authors.each do |aut| %>
+          <h1 class="hidden-md hidden-sm hidden-xs" title="<%= book.title %>"><%= link_to truncate(book.title, :length => 30), book_path(book) %></h1>
+          <h1 class="hidden-lg hidden-xs hidden-sm" title="<%= book.title %>"><%= link_to truncate(book.title, :length => 20), book_path(book) %></h1>
+          <h1 class="hidden-md hidden-lg" style="padding-top:15px;"> <%= link_to book.title, book_path(book) %></h1>
+          <h2><%= book.get_average_rating %></h2>
+          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4  text-right">Opis :</div><div class="col-lg-10 hidden-md hidden-sm hidden-xs text-left"><%= truncate(book.description, :length => 204) %></div><div class="hidden-lg hidden-xs hidden-sm col-md-9 text-left"><%= truncate(book.description, :length => 140) %></div><div class="hidden-lg hidden-md col-xs-8 text-left"><%= book.description %></div></div>
+          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Autor :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left thors"><% book.authors.each do |aut| %>
                 <span><%= link_to aut.name + " " + aut.surname, author_path(aut) %></span>
             <% end %></div></div>
-          <div class="row"><div class="col-lg-2 hidden-md hidden-sm hidden-xs  text-right">Rok wydania :</div><div class="hidden-lg col-md-3 col-xs-4 text-right">Rok :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= @b.year %></div></div>
-          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Wydawca :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= @b.publisher %></div></div>
-          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Gatunek :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= @b.genre %></div></div>
-          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Kraj :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= @b.country %></div></div>
+          <div class="row"><div class="col-lg-2 hidden-md hidden-sm hidden-xs  text-right">Rok wydania :</div><div class="hidden-lg col-md-3 col-xs-4 text-right">Rok :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= book.year %></div></div>
+          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Wydawca :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= book.publisher %></div></div>
+          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Gatunek :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= book.genre %></div></div>
+          <div class="row"><div class="col-lg-2 col-md-3 col-xs-4 text-right">Kraj :</div><div class="col-lg-10 col-md-9 col-xs-8 text-left"><%= book.country %></div></div>
 
       </div>
       </div>
   <% end %>
-  <%= paginate @books %>
+</div>
 </div>

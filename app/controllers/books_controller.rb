@@ -11,34 +11,42 @@ class BooksController < ApplicationController
   end
 
   def ranking
+      @hasz = {}
+      @books = Book.all
 
-      @books = Book.page(params[:page]).per(50)
-      @ranked = {}
-      @ranked_sorted = {}
-
-      @books.each do |book|
-        @reviews = Review.where(book_id: book.id)
-        if @reviews.blank?
-          @avg_review = 0
-        else
-          @avg_review = @reviews.average(:rating).round(2)
-        end
-        @ranked[book.id] = @avg_review
+      if params[:year].present?
+        @books = @books.where(:year => params[:year])
       end
 
+      if params[:country].present?
+        @books = @books.where(:country => params[:country])
+      end
 
-      @ranked.sort{|a,b| a[1]<=>b[1]}.each { |elem|
+      if params[:publisher].present?
+        @books = @books.where(:publisher => params[:publisher])
+      end
+
+      if params[:genre].present?
+        @books = @books.where(:genre => params[:genre])
+      end
+
+      @books.each do |book|
+        @hasz[book] = book.get_average_rating.to_f
+        book.get_average_rating
+      end
+
+      @ranked_sorted = {}
+
+      @hasz.sort{|a,b| a[1]<=>b[1]}.each { |elem|
         @ranked_sorted[elem[0]] = elem[1]
         puts "#{elem[0]}, #{elem[1]}"
       }
 
 
-
-
   end
 
   def index
-    @books = Book.page(params[:page]).per(3)
+    @books = Book.page(params[:page]).per(12)
   end
 
   def new
@@ -85,10 +93,15 @@ class BooksController < ApplicationController
     end
     if current_user
       @reviews.each do |rev|
-        if rev.user_id = current_user.id
+        if rev.user_id == current_user.id
           @rat = true
         end
       end
+    end
+    if @rat
+    puts "jest rat"
+    else
+      puts "nie ma"
     end
   end
 

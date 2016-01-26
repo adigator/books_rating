@@ -14,10 +14,7 @@
  *= require_self
  *= require select2
  */
-* {
-    font-size:14px;
 
-}
 @font-face {
     font-family: cabin-regular; /*a name to be used later*/
     src: url('/assets/fonts/Cabin-Regular.otf'); /*URL to font*/
@@ -249,6 +246,10 @@ input {
     font-size: 70px;
     text-shadow: 5px 5px 8px #000;
 
+
+}
+.heading-rank {
+    margin-top: 15px;
 }
 .heading-rank > a{
     font-size: 35px;
@@ -385,8 +386,44 @@ input {
 }
 .rate{
     font-size: 100px;
-    line-height: 200px;
+    line-height: 230px;
 
+}
+.wapp {
+    margin-top:30px;
+}
+.filter-bar {
+    background: transparent;
+}
+.filter-container {
+    padding-top: 15px;
+}
+.form-filter{
+    margin-top:15px;
+}
+
+
+.btn-red {
+    margin-top:15px;
+    background: #ff0000;
+    background-image: -webkit-linear-gradient(top, #ff0000, #cc0000);
+    background-image: -moz-linear-gradient(top, #ff0000, #cc0000);
+    background-image: -ms-linear-gradient(top, #ff0000, #cc0000);
+    background-image: -o-linear-gradient(top, #ff0000, #cc0000);
+    background-image: linear-gradient(to bottom, #ff0000, #cc0000);
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border: 0;
+    text-shadow: 1px 1px 3px #666666;
+    font-family: Courier New;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.btn-red:hover {
+    text-decoration: none;
 }
 .footer {
     background: #000;
@@ -440,19 +477,86 @@ input {
 .footer .row .footer-right {
     text-align: right;
 }
+.book-view{
+    font-size:16px;
+    margin-top:30px;
+}
+.book-row {
+    background: #000;
+    padding-top:30px;
+    padding-bottom:30px;
+    margin-bottom:30px;
+}
+.mt30{
+    margin-top:30px;
+}
+.mt15{
+    margin-top:15px;
+}
+.user-index {
+    font-size:20px;
+}
+.b-s-a a{
+    font-size:20px;
+    color: white;
+    text-decoration: none;
+}
+.b-s-a a:hover{
+    color:red;
+}
+.btn-red > a {
+    text-decoration:none;
+    color:white;
+}
+.btn-red > a:hover {
+
+    color:white;
+}
+.bk {
+    color:black;
+}
+.select2-results__option[aria-selected]{
+    color:black;
+}
+.select2-selection__choice{
+    color:black;
+}
+.rev-row {
+    background: black;
+
+    padding-top:15px;
+    padding-bottom:15px;
+}
+.rev-row > h3 {
+    font-size: 50px;
+}
+.rev-row:last-child {
+    margin-bottom:30px;
+}
+.bb{
+    border-bottom:1px solid red;
+    padding-bottom:5px;
+}
+.pt {
+    padding-top:5px;
+}
+.nores {
+    resize: none;
+}
 .pagination a, .pagination span.current, .pagination span.gap {
     float: left;
     padding: 0 14px;
     line-height: 38px;
     text-decoration: none;
-    background-color: white;
-    border: 1px solid #DDD;
-    border-left-width: 0;
+    background-color: black;
+    color: red;
 }
 
-.pagination {
-    border-left: 1px solid #ddd;
+.pagination span.current {
+    background-color: red;
+    color:black
 }
+
 .pagination .first{
     padding : 0;
     float: none;

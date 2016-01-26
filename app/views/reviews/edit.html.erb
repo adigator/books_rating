@@ -1,8 +1,10 @@
 <div class="container view">
-<h1>Editing Review</h1>
+
 
 <%= render 'form' %>
 
 
-<%= link_to 'Back', book_path(@book) %>
+  <%= link_to book_path(@book) do %>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 text-center btn-red">Powrót</div>
+  <% end %>
 </div>

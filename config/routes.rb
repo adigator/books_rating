@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'users' => 'users#index'
   get 'add/book' => 'books#new', as: :book_new
   get 'ranking' => 'books#ranking'
+
   get 'admin' => 'pages#admin'
   resources :books do
     collection do

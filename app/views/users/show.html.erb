@@ -1,13 +1,27 @@
-<div class="container view">
-<%= @user.id %>
-<%= @user.username %>
-<%= @user.email %>
-<%= @user.role %>
+<div class="container view ">
+  <div class="row mt30" style="font-size:20px;">
+    <div class="col-xs-6 text-right">ID: </div><div class="col-xs-6 text-left"><%= @user.id %></div>
+    <div class="col-xs-6 text-right">Nazwa użytkownika: </div><div class="col-xs-6 text-left"><%= @user.username %></div>
+    <div class="col-xs-6 text-right">E-mail: </div><div class="col-xs-6 text-left"><%= @user.email %></div>
+    <div class="col-xs-6 text-right">Uprawnienia: </div><div class="col-xs-6 text-left">
+    <% if @user.role != nil %>
+      <%= @user.role %>
+    <% else %>
+      Użytkownik
+    <% end %>
+  </div>
+  </div>
 
 <% if current_user %>
-    <%= link_to "Edytuj", edit_user_path(@user), :class => "gugu"  %>
+      <div class="col-xs-12" style="margin-top:20px;">
+        <%= link_to edit_user_path(@user) do %>
+        <div class="col-xs-4 col-xs-offset-4 btn-red text-center">Edytuj</div>
+        <% end %>
     <% if current_user.admin? %>
-        <%= link_to "Usun", @user, :method => :delete, :data => {:confirm => "czy na pewno?"}, :class => "gugu"  %>
+
+            <div class="col-xs-4 col-xs-offset-4 btn-red text-center" style="cursor:pointer"><%= link_to "Usun", @user, :method => :delete, :data => {:confirm => "czy na pewno?"} %></div>
     <% end %>
+        </div>
 <% end %>
 </div>
+
