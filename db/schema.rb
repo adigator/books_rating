@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160122112939) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authors", force: :cascade do |t|
     t.string   "name"
     t.string   "surname"
@@ -31,8 +34,8 @@ ActiveRecord::Schema.define(version: 20160122112939) do
     t.integer "book_id",   null: false
   end
 
-  add_index "authors_books", ["author_id"], name: "index_authors_books_on_author_id"
-  add_index "authors_books", ["book_id"], name: "index_authors_books_on_book_id"
+  add_index "authors_books", ["author_id"], name: "index_authors_books_on_author_id", using: :btree
+  add_index "authors_books", ["book_id"], name: "index_authors_books_on_book_id", using: :btree
 
   create_table "books", force: :cascade do |t|
     t.string   "title"

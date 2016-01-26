@@ -521,6 +521,9 @@ input {
 .select2-selection__choice{
     color:black;
 }
+.bk > option {
+    color:black;
+}
 .rev-row {
     background: black;
 
