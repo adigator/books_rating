@@ -25,6 +25,7 @@
                 <% author.books.each do |aut| %>
                     <% if iter == 4 %>
                         <p><%= link_to "Pokaż wszystkie", author_path(author) %></p>
+                        <% break %>
                     <% else %>
                         <% iter = iter + 1 %>
                         <p title="<%= aut.title %>"><%= link_to truncate(aut.title, :length => 18), book_path(aut) %></p>

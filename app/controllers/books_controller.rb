@@ -83,10 +83,11 @@ class BooksController < ApplicationController
     else
       @avg_review = @reviews.average(:rating).round(2)
     end
-
-    @reviews.each do |rev|
-      if rev.user_id = current_user.id
-        @rat = true
+    if current_user
+      @reviews.each do |rev|
+        if rev.user_id = current_user.id
+          @rat = true
+        end
       end
     end
   end
