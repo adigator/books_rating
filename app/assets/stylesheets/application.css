@@ -250,13 +250,18 @@ input {
     text-shadow: 5px 5px 8px #000;
 
 }
-.heading-rank {
-
+.heading-rank > a{
+    font-size: 35px;
     text-shadow: 5px 5px 8px #000;
 
 }
 
 .heading-rank > a {
+    -webkit-transition: color 0.5s linear;
+    -moz-transition: color 0.5s linear;
+    -o-transition: color 0.5s linear;
+    -ms-transition: color 0.5s linear;
+    transition: color 0.5s linear;
     text-decoration:none;
     color:red;
 }
