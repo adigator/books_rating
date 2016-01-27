@@ -2,17 +2,12 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:new, :edit, :update, :destroy]
 
-  def search
-    if params[:search].present?
-      @books = Book.search(params[:search])
-    else
-      @books = Book.all
-    end
-  end
 
   def ranking
       @hasz = {}
       @books = Book.all
+
+
 
       if params[:year].present?
         @books = @books.where(:year => params[:year])
@@ -47,6 +42,9 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.page(params[:page]).per(12)
+    if params[:title].present?
+      @books = @books.where(:title => params[:title])
+    end
   end
 
   def new
@@ -122,7 +120,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_path, notice: 'Ksiazka usunieta.' }
+      format.html { redirect_to books_url, notice: 'Ksiazka usunieta.' }
       format.json { head :no_content }
     end
   end

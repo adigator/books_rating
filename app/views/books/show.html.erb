@@ -33,7 +33,7 @@
             <div class="col-xs-4 col-xs-offset-1 btn-red text-center">Edytuj</div>
           <% end %>
 
-        <div class="col-xs-4 col-xs-offset-2 btn-red text-center"><%= link_to "Usuń", @book, :method => :delete, :data => {:confirm => "czy na pewno?"} %></div>
+        <div class="col-xs-4 col-xs-offset-2 btn-red text-center"><%= link_to "Usuń", @book, method: :delete, :data => {:confirm => "czy na pewno?"} %></div>
         </div>
     <% end %>
 

@@ -21,30 +21,23 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   Rails.application.routes.draw do
-    ;get 'books' => "books#index"
+    get 'books' => "books#index"
   end
-  get 'book/:id' => 'books#show', as: :book
+  get 'books/:id' => 'books#show', as: :book
   get 'users' => 'users#index'
   get 'add/book' => 'books#new', as: :book_new
   get 'ranking' => 'books#ranking'
 
   get 'admin' => 'pages#admin'
   resources :books do
-    collection do
-      get 'search'
-    end
     resources :reviews, except: [:show, :index]
   end
 
   post 'add/books' => 'books#create'
   get 'authors' => 'authors#index'
-  get 'author/:id' => 'authors#show', as: :author
+  get 'authors/:id' => 'authors#show', as: :author
   get 'add/author' => 'authors#new', as: :author_new
-  resources :authors do
-    collection do
-      get 'search'
-    end
-  end
+  resources :authors
   post 'add/authors' => 'authors#create'
   # Example resource route with options:
   #   resources :products do

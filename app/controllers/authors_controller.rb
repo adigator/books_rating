@@ -2,16 +2,18 @@ class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: [:new, :edit, :update, :destroy]
 
-  def search
-    if params[:search].present?
-      @authors = Author.search(params[:search])
-    else
-      @authors = Author.all
-    end
-  end
+
 
   def index
     @authors = Author.all
+    if params[:aut].present?
+      @authors = @authors.where(:name => params[:aut])
+    end
+    if @authors.blank?
+      @authors = Author.all
+      @authors = @authors.where(:surname => params[:aut])
+    end
+
   end
 
   def new
