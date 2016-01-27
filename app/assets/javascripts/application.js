@@ -18,7 +18,7 @@
 $(document).ready(function(){
     $(".sel-custom").select2();
     $(".star-rating").raty({
-        path: '/assets/',
+
         number: 10,
         readOnly: true,
         score: function(){
