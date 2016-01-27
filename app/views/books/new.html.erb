@@ -34,12 +34,12 @@
 
     <div class="col-xs-12 mt15">
       <div class="col-xs-5 text-right"><%= f.label "autorzy" %></div>
-        <div class="col-xs-7 text-left" > <%= f.select(:author_ids, @authors.map {|p| [p.name,p.id]},
+        <div class="col-xs-7 text-left" > <%= f.select(:author_ids, @authors.map {|p| [p.name + " " + p.surname,p.id]},
                    { :prompt => 'Wybierz autorow'},
                    { :multiple => true, :size => 5, :class => 'sel-custom bk', :style => "color:#fff" })  %></div>
     </div>
       <div class="col-xs-12">
-    <%= f.submit 'Dodaj książkę',class:' btn-red' %>
+    <%= f.submit 'Dodaj książkę',class:' btn-red', style:'margin-bottom:30px' %>
       </div>
       </div>
     </div>

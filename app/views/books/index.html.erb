@@ -22,7 +22,7 @@
             <div class="col-xs-6 text-right"><span>Autor: </span></div>
             <div class="col-xs-6 text-left authors">
             <% book.authors.each do |aut| %>
-                <%= link_to aut.name + " " + aut.surname, author_path(aut) %>
+                <%= link_to aut.name[0] + ". " + aut.surname, author_path(aut) %>
             <% end %></div>
             <div class="col-xs-6 text-right"><span>Rok wydania: </span></div><div class="col-xs-6 text-left"><%= book.year %></div>
             <div class="col-xs-6 text-right"><span>Wydawca: </span></div><div class="col-xs-6 text-left"><%= book.publisher %></div>
